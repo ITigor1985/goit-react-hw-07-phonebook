@@ -1,31 +1,20 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { itemsSlice } from './itemsSlice';
-import { filterSlice } from './filterSlice';
-import { combineReducers } from '@reduxjs/toolkit';
-import storage from 'redux-persist/lib/storage';
-import { persistStore, persistReducer } from 'redux-persist';
+import { configureStore } from '@reduxjs/toolkit';
+// Or from '@reduxjs/toolkit/query/react'
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { contactsApi } from './contactsApi';
 
-const persistConfig = {
-  key: 'contactsBook',
-  storage,
-  blacklist: ['filter'],
-};
-
-const rootReducer = combineReducers({
-  items: itemsSlice.reducer,
-  filter: filterSlice.reducer,
+export const store = configureStore({
+  reducer: {
+    // Add the generated reducer as a specific top-level slice
+    [contactsApi.reducerPath]: contactsApi.reducer,
+  },
+  // Adding the api middleware enables caching, invalidation, polling,
+  // and other useful features of `rtk-query`.
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(contactsApi.middleware),
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// optional, but required for refetchOnFocus/refetchOnReconnect behaviors
+// see `setupListeners` docs - takes an optional callback as the 2nd arg for customization
 
-const store = configureStore({
-  reducer: persistedReducer,
-  middleware: getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: ['persist/PERSIST'],
-    },
-  }),
-});
-
-export const persistor = persistStore(store);
-export default store;
+setupListeners(store.dispatch);

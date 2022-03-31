@@ -3,13 +3,13 @@ import { Contact, ContactWrapper } from './ContactsItem.styled';
 import { remove } from '../../redux/itemsSlice';
 import { useDispatch } from 'react-redux';
 import Button from 'components/Buttons/Button';
-const ContactsItem = ({ id, name, number }) => {
+const ContactsItem = ({ id, name, phone }) => {
   const dispatch = useDispatch();
   return (
     <Contact>
       <ContactWrapper>
         <span>{name}:</span>
-        <span>{number} </span>
+        <span>{phone} </span>
       </ContactWrapper>
       <Button
         type="button"

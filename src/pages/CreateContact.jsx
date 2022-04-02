@@ -1,10 +1,10 @@
 import { Redirect } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import { useCreateTodoMutation } from 'redux/todos/todoSlice';
+import { useCreateContactMutation } from 'redux/contacts/contactSlice';
 import { Spinner } from 'components/Spinner/Spinner';
 
-export const CreateTodoPage = () => {
-  const [createTodo, { isLoading, isSuccess }] = useCreateTodoMutation();
+export const CreateContactPage = () => {
+  const [createTodo, { isLoading, isSuccess }] = useCreateContactMutation();
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -16,7 +16,7 @@ export const CreateTodoPage = () => {
 
   return (
     <>
-      {isSuccess && <Redirect to="/todos" />}
+      {isSuccess && <Redirect to="/contacts" />}
       <form autoComplete="off" onSubmit={handleSubmit}>
         <input type="text" name="content" />
         <button type="submit" disabled={isLoading}>

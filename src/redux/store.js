@@ -1,19 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { usersReducer } from './users/usersSlice';
-import { pokemonApi } from './pokemon';
-import { todoApi } from './todos/todoSlice';
+import { contactApi } from './contacts/contactSlice';
 
 export const store = configureStore({
   reducer: {
-    users: usersReducer,
-    [pokemonApi.reducerPath]: pokemonApi.reducer,
-    [todoApi.reducerPath]: todoApi.reducer,
+    [contactApi.reducerPath]: contactApi.reducer,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware(),
-    pokemonApi.middleware,
-    todoApi.middleware,
+    contactApi.middleware,
   ],
 });
 

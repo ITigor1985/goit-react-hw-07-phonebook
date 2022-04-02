@@ -1,31 +1,20 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { itemsSlice } from './itemsSlice';
-import { filterSlice } from './filterSlice';
-import { combineReducers } from '@reduxjs/toolkit';
-import storage from 'redux-persist/lib/storage';
-import { persistStore, persistReducer } from 'redux-persist';
+import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { usersReducer } from './users/usersSlice';
+import { pokemonApi } from './pokemon';
+import { todoApi } from './todos/todoSlice';
 
-const persistConfig = {
-  key: 'contactsBook',
-  storage,
-  blacklist: ['filter'],
-};
-
-const rootReducer = combineReducers({
-  items: itemsSlice.reducer,
-  filter: filterSlice.reducer,
+export const store = configureStore({
+  reducer: {
+    users: usersReducer,
+    [pokemonApi.reducerPath]: pokemonApi.reducer,
+    [todoApi.reducerPath]: todoApi.reducer,
+  },
+  middleware: getDefaultMiddleware => [
+    ...getDefaultMiddleware(),
+    pokemonApi.middleware,
+    todoApi.middleware,
+  ],
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-const store = configureStore({
-  reducer: persistedReducer,
-  middleware: getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: ['persist/PERSIST'],
-    },
-  }),
-});
-
-export const persistor = persistStore(store);
-export default store;
+setupListeners(store.dispatch);

@@ -4,11 +4,12 @@ import { useCreateContactMutation } from 'redux/contacts/contactSlice';
 import { Spinner } from 'components/Spinner/Spinner';
 
 export const CreateContactPage = () => {
-  const [createTodo, { isLoading, isSuccess }] = useCreateContactMutation();
+  const [createContact, { isLoading, isSuccess }] = useCreateContactMutation();
 
   const handleSubmit = async e => {
     e.preventDefault();
-    createTodo(e.currentTarget.elements.content.value);
+    createContact({e.currentTarget.elements.name.value, e.currentTarget.elements.phone.value});
+    
     e.currentTarget.reset();
 
     toast.success('Заметка создана!');
@@ -18,7 +19,8 @@ export const CreateContactPage = () => {
     <>
       {isSuccess && <Redirect to="/contacts" />}
       <form autoComplete="off" onSubmit={handleSubmit}>
-        <input type="text" name="content" />
+        <input type="text" name="name" />
+        <input type="text" name="phone" />
         <button type="submit" disabled={isLoading}>
           {isLoading && <Spinner size={12} />}
           Create

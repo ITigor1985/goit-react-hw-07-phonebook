@@ -3,12 +3,8 @@ import { ContactListItem } from '../ContactListItem/ContactListItem';
 export const ContactList = ({ contacts }) => {
   return (
     <ul>
-      {contacts.map(contact => (
-        <ContactListItem
-          key={contact.id}
-          name={contact.name}
-          phone={contact.phone}
-        />
+      {contacts.map(({ id, name, phone }) => (
+        <ContactListItem key={id} name={name} phone={phone} />
       ))}
     </ul>
   );

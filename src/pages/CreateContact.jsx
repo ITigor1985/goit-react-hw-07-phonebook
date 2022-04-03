@@ -8,8 +8,9 @@ export const CreateContactPage = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    createContact({e.currentTarget.elements.name.value, e.currentTarget.elements.phone.value});
-    
+
+    createContact(e.currentTarget.elements.name.value);
+
     e.currentTarget.reset();
 
     toast.success('Заметка создана!');

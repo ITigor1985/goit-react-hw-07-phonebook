@@ -1,5 +1,5 @@
 import { ContactListItem } from '../ContactListItem/ContactListItem';
-import { selectFilter } from 'redux/filter/fiterSlice';
+import { selectFilter } from 'redux/filterSlice/fiterSlice';
 import { useSelector } from 'react-redux';
 
 export const ContactList = ({ contacts }) => {

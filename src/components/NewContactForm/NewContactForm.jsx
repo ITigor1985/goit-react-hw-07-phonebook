@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import {
   useCreateContactMutation,
   useFetchContactsQuery,
-} from 'redux/contacts/contactSlice';
+} from 'redux/contactsSlice/contactSlice';
 import Button from 'components/Buttons/Button';
 import { Formik, Field, Form } from 'formik';
 import { FormInput, InputLabel } from './NewContactForm.styled';
@@ -11,7 +11,7 @@ import { Spinner } from 'components/Spinner/Spinner';
 
 const initialState = {
   name: '',
-  number: '',
+  phone: '',
 };
 
 export const NewContactForm = () => {

@@ -1,4 +1,4 @@
-import { useDeleteContactMutation } from 'redux/contacts/contactSlice';
+import { useDeleteContactMutation } from 'redux/contactsSlice/contactSlice';
 import { Spinner } from 'components/Spinner/Spinner';
 
 export const ContactListItem = ({ id, name, phone }) => {

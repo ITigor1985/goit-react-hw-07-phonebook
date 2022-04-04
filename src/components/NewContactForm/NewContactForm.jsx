@@ -1,6 +1,6 @@
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import {
   useCreateContactMutation,
   useFetchContactsQuery,
@@ -15,6 +15,10 @@ const initialState = {
   phone: '',
 };
 
+const positionToast = () => {
+  return { position: toast.POSITION.TOP_CENTER };
+};
+
 export const NewContactForm = () => {
   const [createContact, { isLoading, isSuccess }] = useCreateContactMutation();
   const { data: contacts } = useFetchContactsQuery();
@@ -24,23 +28,20 @@ export const NewContactForm = () => {
     );
 
     if (isNameInContacts) {
-      console.log(name);
-      toast.warn('is already in contacts');
+      toast.warn('is already in contacts', positionToast());
       return;
     }
 
     createContact({ name, phone });
 
     resetForm();
-    toast.success('Contacts create!', {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.success('Contacts create!', positionToast());
   };
 
   return (
     <>
       {isLoading && <Spinner />}
-      {isSuccess && <Redirect to="/contacts" />}
+      {/* {isSuccess && <Redirect to="/contacts" />} */}
       <Formik initialValues={initialState} onSubmit={handleSubmit}>
         <Form autoComplete="off">
           <InputLabel htmlFor="name">Name</InputLabel>
@@ -66,7 +67,7 @@ export const NewContactForm = () => {
           <Button type="submit" text="Add contact" />
         </Form>
       </Formik>
-      <ToastContainer position="bottom-right" newestOnTop />
+      <ToastContainer />
     </>
   );
 };

@@ -12,10 +12,11 @@ export const App = () => {
         </Route>
         <Route path="/contacts" exact>
           <ContactsPage />
-        </Route>
-        <Route path="/contacts/create">
           <CreateContactPage />
         </Route>
+        {/* <Route path="/contacts/create">
+          <CreateContactPage />
+        </Route> */}
       </Switch>
     </>
   );

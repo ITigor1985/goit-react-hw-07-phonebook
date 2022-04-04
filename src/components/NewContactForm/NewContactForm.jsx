@@ -7,6 +7,7 @@ import {
 import Button from 'components/Buttons/Button';
 import { Formik, Field, Form } from 'formik';
 import { FormInput, InputLabel } from './NewContactForm.styled';
+import { Spinner } from 'components/Spinner/Spinner';
 
 const initialState = {
   name: '',
@@ -42,6 +43,7 @@ export const NewContactForm = () => {
   //   };
   return (
     <>
+      {isLoading && <Spinner />}
       {isSuccess && <Redirect to="/contacts" />}
       <Formik initialValues={initialState} onSubmit={handleSubmit}>
         <Form autoComplete="off">

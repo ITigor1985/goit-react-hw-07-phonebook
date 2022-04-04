@@ -1,4 +1,5 @@
-import { toast } from 'react-hot-toast';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Redirect } from 'react-router-dom';
 import {
   useCreateContactMutation,
@@ -23,24 +24,19 @@ export const NewContactForm = () => {
     );
 
     if (isNameInContacts) {
-      toast.warn(`${name} is already in contacts`);
+      console.log(name);
+      toast.warn('is already in contacts');
       return;
     }
 
     createContact({ name, phone });
-    toast.success('Contacts create!');
+
     resetForm();
+    toast.success('Contacts create!', {
+      position: toast.POSITION.TOP_CENTER,
+    });
   };
 
-  //   const handleSubmit = async e => {
-  //     e.preventDefault();
-
-  //     createContact(e.currentTarget.elements.name.value);
-
-  //     e.currentTarget.reset();
-
-  //     toast.success('Заметка создана!');
-  //   };
   return (
     <>
       {isLoading && <Spinner />}
@@ -68,10 +64,9 @@ export const NewContactForm = () => {
           />
 
           <Button type="submit" text="Add contact" />
-
-          {/* <button type="submit">Add contact</button> */}
         </Form>
       </Formik>
+      <ToastContainer position="bottom-right" newestOnTop />
     </>
   );
 };

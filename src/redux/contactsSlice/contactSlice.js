@@ -11,14 +11,19 @@ export const contactApi = createApi({
       query: () => '/contacts',
       providesTags: result =>
         result
-          ? result.map(({ id }) => ({ type: 'Contacts', id }))
-          : ['Contacts'],
+          ? [
+              ...result.map(({ id }) => ({ type: 'Contacts', id })),
+              { type: 'Contacts', id: 'LIST' },
+            ]
+          : [{ type: 'Contacts', id: 'LIST' }],
     }),
     deleteContact: builder.mutation({
-      query: id => ({
-        url: `/contacts/${id}`,
-        method: 'DELETE',
-      }),
+      query(id) {
+        return {
+          url: `/contacts/${id}`,
+          method: 'DELETE',
+        };
+      },
       invalidatesTags: ['Contacts'],
     }),
     createContact: builder.mutation({

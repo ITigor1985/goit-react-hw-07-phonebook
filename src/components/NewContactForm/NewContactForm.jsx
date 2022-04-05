@@ -1,6 +1,6 @@
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import { Redirect } from 'react-router-dom';
+
 import {
   useCreateContactMutation,
   useFetchContactsQuery,
@@ -20,7 +20,7 @@ const positionToast = () => {
 };
 
 export const NewContactForm = () => {
-  const [createContact, { isLoading, isSuccess }] = useCreateContactMutation();
+  const [createContact, { isLoading }] = useCreateContactMutation();
   const { data: contacts } = useFetchContactsQuery();
   const handleSubmit = ({ name, phone }, { resetForm }) => {
     const isNameInContacts = contacts.find(
@@ -41,7 +41,7 @@ export const NewContactForm = () => {
   return (
     <>
       {isLoading && <Spinner />}
-      {/* {isSuccess && <Redirect to="/contacts" />} */}
+
       <Formik initialValues={initialState} onSubmit={handleSubmit}>
         <Form autoComplete="off">
           <InputLabel htmlFor="name">Name</InputLabel>

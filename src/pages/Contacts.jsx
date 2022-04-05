@@ -7,13 +7,15 @@ export const ContactsPage = () => {
   const { data: contacts, isFetching } = useFetchContactsQuery();
 
   const totalContacts = () => {
-    return `Total contacts: ${contacts.length}`;
+    if (contacts) {
+      return `Total contacts: ${contacts.length}`;
+    } else return;
   };
 
   return (
     <div>
       <Filter />
-      <h1>Create contact</h1>
+      <h1>Contacts</h1>
       {isFetching && <Spinner />}
       {totalContacts()}
       {contacts && <ContactList contacts={contacts} />}

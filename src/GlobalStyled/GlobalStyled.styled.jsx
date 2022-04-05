@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 body {
@@ -8,19 +8,24 @@ body {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    
   }
   
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
       monospace;
   }
+* {
+  box-sizing: border-box;
+}
+
   h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  color: var(--title-text-color);
+  
   margin-top: 0;
   margin-bottom: 0;
 }

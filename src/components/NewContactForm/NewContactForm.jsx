@@ -7,7 +7,12 @@ import {
 } from 'redux/contactsSlice/contactSlice';
 import Button from 'components/Buttons/Button';
 import { Formik, Field, Form } from 'formik';
-import { FormInput, InputLabel, Title } from './NewContactForm.styled';
+import {
+  FormInput,
+  InputLabel,
+  Title,
+  Container,
+} from './NewContactForm.styled';
 import { Spinner } from 'components/Spinner/Spinner';
 
 const initialState = {
@@ -42,31 +47,33 @@ export const NewContactForm = () => {
     <>
       {isLoading && <Spinner />}
       <Title>Create contact</Title>
-      <Formik initialValues={initialState} onSubmit={handleSubmit}>
-        <Form autoComplete="off">
-          <InputLabel htmlFor="name">Name</InputLabel>
-          <Field
-            as={FormInput}
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
+      <Container>
+        <Formik initialValues={initialState} onSubmit={handleSubmit}>
+          <Form autoComplete="off">
+            <InputLabel htmlFor="name">Name</InputLabel>
+            <Field
+              as={FormInput}
+              type="text"
+              name="name"
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              required
+            />
 
-          <InputLabel htmlFor="number">Phone number</InputLabel>
-          <Field
-            as={FormInput}
-            type="tel"
-            name="phone"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
+            <InputLabel htmlFor="number">Phone number</InputLabel>
+            <Field
+              as={FormInput}
+              type="tel"
+              name="phone"
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              required
+            />
 
-          <Button type="submit" text="Add contact" />
-        </Form>
-      </Formik>
+            <Button type="submit" text="Add contact" />
+          </Form>
+        </Formik>
+      </Container>
       <ToastContainer />
     </>
   );

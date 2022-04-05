@@ -15,3 +15,6 @@ export const InputLabel = styled.label`
   margin-left: 10px;
   color: blue;
 `;
+export const Title = styled.h1`
+  text-align: center;
+`;

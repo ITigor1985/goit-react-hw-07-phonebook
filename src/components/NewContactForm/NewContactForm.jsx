@@ -7,7 +7,7 @@ import {
 } from 'redux/contactsSlice/contactSlice';
 import Button from 'components/Buttons/Button';
 import { Formik, Field, Form } from 'formik';
-import { FormInput, InputLabel } from './NewContactForm.styled';
+import { FormInput, InputLabel, Title } from './NewContactForm.styled';
 import { Spinner } from 'components/Spinner/Spinner';
 
 const initialState = {
@@ -41,7 +41,7 @@ export const NewContactForm = () => {
   return (
     <>
       {isLoading && <Spinner />}
-
+      <Title>Create contact</Title>
       <Formik initialValues={initialState} onSubmit={handleSubmit}>
         <Form autoComplete="off">
           <InputLabel htmlFor="name">Name</InputLabel>

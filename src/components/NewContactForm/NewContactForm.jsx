@@ -14,6 +14,7 @@ import {
   Container,
 } from './NewContactForm.styled';
 import { Spinner } from 'components/Spinner/Spinner';
+import { Redirect } from 'react-router-dom';
 
 const initialState = {
   name: '',
@@ -25,7 +26,7 @@ const positionToast = () => {
 };
 
 export const NewContactForm = () => {
-  const [createContact, { isLoading }] = useCreateContactMutation();
+  const [createContact, { isLoading, isSuccess }] = useCreateContactMutation();
   const { data: contacts } = useFetchContactsQuery();
   console.log(contacts);
   const handleSubmit = ({ name, phone }, { resetForm }) => {
@@ -47,6 +48,7 @@ export const NewContactForm = () => {
   return (
     <>
       {isLoading && <Spinner />}
+      {isSuccess && <Redirect to="/contacts" />}
       <Title>Create contact</Title>
       <Container>
         <Formik initialValues={initialState} onSubmit={handleSubmit}>

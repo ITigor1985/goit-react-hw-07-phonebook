@@ -20,7 +20,7 @@ export const Title = styled.h1`
 `;
 export const Container = styled.div`
   width: 265px;
-  padding: 15px;
-  margin: 20px auto;
+
+  margin: 10px auto;
   background-color: aqua;
 `;

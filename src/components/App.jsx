@@ -4,6 +4,7 @@ import { HomePage } from 'pages/Home';
 import CreateContact from './CreateContact/CreateContact';
 import { GlobalStyle } from '../GlobalStyled/GlobalStyled.styled';
 import { Container } from './App.styled';
+import Contact from './Contact';
 
 export const App = () => {
   return (
@@ -14,8 +15,13 @@ export const App = () => {
             <HomePage />
           </Route>
           <Route path="/contacts" exact>
-            <CreateContact />
             <ContactsPage />
+          </Route>
+          <Route path="/contacts/create">
+            <CreateContact />
+          </Route>
+          <Route path="/contacts/:id">
+            <Contact />
           </Route>
         </Switch>
       </Container>

@@ -27,6 +27,7 @@ const positionToast = () => {
 export const NewContactForm = () => {
   const [createContact, { isLoading }] = useCreateContactMutation();
   const { data: contacts } = useFetchContactsQuery();
+  console.log(contacts);
   const handleSubmit = ({ name, phone }, { resetForm }) => {
     const isNameInContacts = contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()

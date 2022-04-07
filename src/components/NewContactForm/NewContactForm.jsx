@@ -12,9 +12,11 @@ import {
   InputLabel,
   Title,
   Container,
+  ListBtn,
 } from './NewContactForm.styled';
 import { Spinner } from 'components/Spinner/Spinner';
 import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const initialState = {
   name: '',
@@ -77,6 +79,34 @@ export const NewContactForm = () => {
           </Form>
         </Formik>
       </Container>
+      <ListBtn>
+        <li>
+          <button
+            type="button"
+            style={{
+              width: '100px',
+              margin: '0 auto',
+              position: 'relative',
+              top: '100px',
+            }}
+          >
+            <Link to="/">Home</Link>
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            style={{
+              width: '100px',
+              margin: '0 auto',
+              position: 'relative',
+              top: '100px',
+            }}
+          >
+            <Link to="/contacts">Contacts</Link>
+          </button>
+        </li>
+      </ListBtn>
       <ToastContainer />
     </>
   );

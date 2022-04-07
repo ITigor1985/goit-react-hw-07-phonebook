@@ -24,3 +24,7 @@ export const Container = styled.div`
   margin: 10px auto;
   background-color: aqua;
 `;
+export const ListBtn = styled.ul`
+  display: flex;
+  justify-content: center;
+`;

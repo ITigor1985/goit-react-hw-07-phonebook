@@ -27,9 +27,11 @@ export const ContactList = ({ contacts }) => {
 };
 
 ContactList.propTypes = {
-  contacts: propTypes.shape.isRequired({
-    name: propTypes.string.isRequired,
-    id: propTypes.string.isRequired,
-    phone: propTypes.string.isRequired,
-  }),
+  contacts: propTypes.arrayOf(
+    propTypes.shape({
+      name: propTypes.string.isRequired,
+      id: propTypes.string.isRequired,
+      phone: propTypes.string.isRequired,
+    })
+  ).isRequired,
 };

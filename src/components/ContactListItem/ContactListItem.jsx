@@ -1,3 +1,4 @@
+import propTypes from 'prop-types';
 import { Name, BoxContact, ContactLink } from './ContactListItem.styled';
 
 export const ContactListItem = ({ id, name, phone }) => {
@@ -8,4 +9,10 @@ export const ContactListItem = ({ id, name, phone }) => {
       </ContactLink>
     </BoxContact>
   );
+};
+
+ContactListItem.propTypes = {
+  name: propTypes.string.isRequired,
+  id: propTypes.string.isRequired,
+  phone: propTypes.string.isRequired,
 };

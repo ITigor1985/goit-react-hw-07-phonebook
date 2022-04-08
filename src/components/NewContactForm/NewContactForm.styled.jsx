@@ -28,3 +28,16 @@ export const ListBtn = styled.ul`
   display: flex;
   justify-content: center;
 `;
+export const BtnGoHome = styled.button`
+  width: 100px;
+  margin: 0 auto;
+  position: relative;
+  top: 100px;
+`;
+
+export const BtnGoContact = styled.button`
+  width: 100px;
+  margin: 0 auto;
+  position: relative;
+  top: 100px;
+`;

@@ -6,12 +6,16 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from 'redux/store';
 import './index.css';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './constant/theme';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter basename="/goit-react-hw-07-phonebook/">
       <Provider store={store}>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,

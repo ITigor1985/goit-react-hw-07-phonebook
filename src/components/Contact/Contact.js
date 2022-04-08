@@ -4,6 +4,7 @@ import {
 } from 'redux/contactsSlice/contactSlice';
 import { useParams } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
+import { FullContact, BtnDeleteContact } from './Contact.styled';
 
 const Contact = () => {
   const { data: contacts } = useFetchContactsQuery();
@@ -14,14 +15,14 @@ const Contact = () => {
 
   return (
     <>
-      <ul>
+      <FullContact>
         <li>{getContact.name}</li>
         <li>{getContact.phone}</li>
-      </ul>
-      <button onClick={() => deleteContact(id)} disabled={isDeleting}>
+      </FullContact>
+      <BtnDeleteContact onClick={() => deleteContact(id)} disabled={isDeleting}>
         {isDeleting && <Redirect to="/contacts" />}
         Delete
-      </button>
+      </BtnDeleteContact>
     </>
   );
 };

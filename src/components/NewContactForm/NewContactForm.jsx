@@ -13,6 +13,8 @@ import {
   Title,
   Container,
   ListBtn,
+  BtnGoHome,
+  BtnGoContact,
 } from './NewContactForm.styled';
 import { Spinner } from 'components/Spinner/Spinner';
 //import { Redirect } from 'react-router-dom';
@@ -81,30 +83,14 @@ export const NewContactForm = () => {
       </Container>
       <ListBtn>
         <li>
-          <button
-            type="button"
-            style={{
-              width: '100px',
-              margin: '0 auto',
-              position: 'relative',
-              top: '100px',
-            }}
-          >
+          <BtnGoHome type="button">
             <Link to="/">Home</Link>
-          </button>
+          </BtnGoHome>
         </li>
         <li>
-          <button
-            type="button"
-            style={{
-              width: '100px',
-              margin: '0 auto',
-              position: 'relative',
-              top: '100px',
-            }}
-          >
+          <BtnGoContact type="button">
             <Link to="/contacts">Contacts</Link>
-          </button>
+          </BtnGoContact>
         </li>
       </ListBtn>
       <ToastContainer />

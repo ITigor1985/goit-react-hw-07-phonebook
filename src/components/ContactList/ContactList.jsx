@@ -1,3 +1,4 @@
+import propTypes from 'prop-types';
 import { ContactListItem } from '../ContactListItem/ContactListItem';
 import { selectFilter } from 'redux/filterSlice/fiterSlice';
 import { useSelector } from 'react-redux';
@@ -23,4 +24,12 @@ export const ContactList = ({ contacts }) => {
       ))}
     </ListContacts>
   );
+};
+
+ContactList.propTypes = {
+  contacts: propTypes.shape.isRequired({
+    name: propTypes.string.isRequired,
+    id: propTypes.string.isRequired,
+    phone: propTypes.string.isRequired,
+  }),
 };

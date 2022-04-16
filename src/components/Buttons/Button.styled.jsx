@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const PageButton = styled.button`
-  display: inline-flex;
-  margin: 10px;
+  display: block;
+
+  margin: 0 auto;
   text-decoration: none;
   position: relative;
   font-size: 16px;

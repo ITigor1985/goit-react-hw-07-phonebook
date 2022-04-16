@@ -20,24 +20,32 @@ export const Title = styled.h1`
 `;
 export const Container = styled.div`
   width: 265px;
-
+  padding: 10px 15px;
   margin: 10px auto;
-  background-color: aqua;
+  background-color: #d5dada;
+  border-radius: 15px;
 `;
 export const ListBtn = styled.ul`
   display: flex;
   justify-content: center;
 `;
 export const BtnGoHome = styled.button`
-  width: 100px;
-  margin: 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
   position: relative;
   top: 100px;
+  margin-right: 20px;
+  background-color: white;
 `;
 
 export const BtnGoContact = styled.button`
-  width: 100px;
-  margin: 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
   position: relative;
   top: 100px;
+  background-color: white;
 `;

@@ -8,6 +8,7 @@ export const FormInput = styled.input`
   border-radius: 15px;
   padding: 10px;
   font-size: 16px;
+  border: none;
 `;
 
 export const InputLabel = styled.label`
